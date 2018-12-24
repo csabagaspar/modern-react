@@ -7,13 +7,13 @@ function Counter() {
   // 🐨 1. instead of passing the value to useState as we are now,
   // pass a function which returns the value.
   const [count, setCount] = useState(
-    Number(window.localStorage.getItem('count') || 0),
+    () => Number(window.localStorage.getItem('count') || 0),
   )
   const incrementCount = () => setCount(count + 1)
   useEffect(
     () => {
       window.localStorage.setItem('count', count)
-    },
+    },[count]
     // 🐨 2. pass a second argument to useEffect right here
     // it should be an array of the callback's "dependencies"
     // Said differently: "What variables does the useEffect callback use?"
