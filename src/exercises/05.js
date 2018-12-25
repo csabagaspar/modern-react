@@ -4,21 +4,27 @@
 // Make sure to ask me what the difference is!
 // https://reactjs.org/docs/hooks-reference.html#useref
 // https://reactjs.org/docs/hooks-reference.html#uselayouteffect
-import React from 'react'
+import React, { useLayoutEffect, useRef } from 'react'
 // 🐨 2. you'll need this:
 // import VanillaTilt from 'vanilla-tilt'
+import VanillaTilt from 'vanilla-tilt'
 
 function Tilt(props) {
   // 🐨 3. create a `tiltNode` variable here with `useRef()`
+  const tiltNode = useRef()
   // 🐨 5. create a `useLayoutEffect` callback here which
   //    uses the `VanillaTilt.init` with `tiltNode.current`
+  useLayoutEffect(() => {
+   const vanillaTiltOptions = {
+     max: 25,
+     speed: 400,
+     glare: true,
+     'max-glare': 0.5,
+   }
+    VanillaTilt.init(tiltNode.current, vanillaTiltOptions)
+    return () => tiltNode.current.vanillaTilt.destroy()
+  }, [])
   // 🐨 6: you'll need this in your callback:
-  // const vanillaTiltOptions = {
-  //   max: 25,
-  //   speed: 400,
-  //   glare: true,
-  //   'max-glare': 0.5,
-  // }
   // 🐨 7. return a cleanup function which will call
   //   `tiltNode.current.vanillaTilt.destroy()`
 
@@ -31,8 +37,10 @@ function Tilt(props) {
 
   // 🐨 4. pass the `tiltNode` variable to this `div` as the `ref` prop:
   return (
-    <div className="tilt-root">
-      <div className="tilt-child">{props.children}</div>
+    <div className="tilt-root" ref={tiltNode}>
+      <div className="tilt-child">
+        {props.children}
+      </div>
     </div>
   )
 }
