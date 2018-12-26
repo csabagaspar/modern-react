@@ -1,7 +1,7 @@
 import React from 'react'
 import {render, fireEvent} from 'react-testing-library'
-import Usage from '../exercises-final/10'
-// import Usage from '../exercises/10'
+//import Usage from '../exercises-final/10'
+import Usage from '../exercises/10'
 
 test('renders upper case first and last name', async () => {
   const {getByLabelText, getByText} = render(<Usage />)
