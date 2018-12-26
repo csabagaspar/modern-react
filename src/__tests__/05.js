@@ -13,9 +13,8 @@ afterEach(() => {
 })
 
 test('calls VanillaTilt.init with the root node', () => {
-  const {container, debug} = render(<Usage />)
+  const {container} = render(<Usage />)
   expect(container.querySelector('.tilt-root')).toHaveProperty('vanillaTilt')
-  debug()
   expect(VanillaTilt.init).toHaveBeenCalledTimes(1)
 })
 

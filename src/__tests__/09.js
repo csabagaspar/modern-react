@@ -1,8 +1,8 @@
 import React from 'react'
 import chalk from 'chalk'
 import {render, fireEvent} from 'react-testing-library'
-import Usage from '../exercises-final/09'
-// import Usage from '../exercises/09'
+//import Usage from '../exercises-final/09'
+import Usage from '../exercises/09'
 
 const sleep = time => new Promise(resolve => setTimeout(resolve, time))
 
@@ -21,12 +21,13 @@ test('renders', async () => {
     label: container.querySelectorAll('label')[1],
   }
 
+
   fireEvent.click(timer1.startStop)
 
   await sleep(200)
 
-  expect(parseInt(diff.textContent, 10)).toBeGreaterThan(150)
 
+  expect(parseInt(diff.textContent, 10)).toBeGreaterThan(150)
   fireEvent.click(timer2.startStop)
 
   await sleep(200)
