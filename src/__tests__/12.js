@@ -1,8 +1,8 @@
 import React from 'react'
 import VanillaTilt from 'vanilla-tilt'
 import {render, wait, fireEvent} from 'react-testing-library'
-import Usage from '../exercises-final/12'
-// import Usage from '../exercises/12'
+//import Usage from '../exercises-final/12'
+import Usage from '../exercises/12'
 
 beforeEach(() => {
   jest.spyOn(VanillaTilt, 'init')
